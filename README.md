@@ -50,20 +50,25 @@ ldap:
   base: ""                                              : LDAP BASE VALUE
 
 
-  *1 - We added sync lock concept to get rid of race condition between multiple running instances of this process. We do it by storing a key-value pair lock in the vault itself. This api is for getting that lock value and *2 is for updating the lock value. (It's a binary lock having value 0 & 1).
+  *1 -  We added sync lock concept to get rid of race condition between multiple running instances 
+        of this process. We do it by storing a key-value pair lock in the vault itself. This api is
+        for getting that lock value and *2 is for updating the lock value. (It's a binary lock 
+        having value 0 & 1).
 
-  *3 - As creating and updating a group and adding removing members in a group is root operation so we require root token for it. Decide with the team how you distribute root token to this process and keep it safe.
+  *3 -  As creating and updating a group and adding removing members in a group is root operation 
+        so we require root token for it. Decide with the team how you distribute root token to 
+        this process and keep it safe.
 
-  *4 - This value corresponds to time interval (in hrs) at which this utility repeats it's processes. As 
-        here its 3 so it repeats every 3 hrs. 
+  *4 -  This value corresponds to time interval (in hrs) at which this utility repeats it's 
+        processes. As here its 3 so it repeats every 3 hrs. 
 
-  *5 - We maintain cache for ldap information. So, this is the expiration time for that cache.
+  *5 -  We maintain cache for ldap information. So, this is the expiration time for that cache.
 
-  *6 - The groups section is a mapping. 
+  *6 -  The groups section is a mapping. 
 
         'name' corresponds to the Group name in the Vault.
         'groupFilter' corresponds to the LDAP query for listing all members in a group. 
 
-        So once you have all the members from the LDAP group those members will be added in the group in 
-        Vault given those members have logged in once into Vault.  
+        So once you have all the members from the LDAP group those members will be added in the 
+        group in Vault given those members have logged in once into Vault.  
 ```
