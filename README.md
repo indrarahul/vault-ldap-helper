@@ -54,6 +54,11 @@ ldap:
         of this process. We do it by storing a key-value pair lock in the vault itself. This api is
         for getting that lock value and *2 is for updating the lock value. (It's a binary lock 
         having value 0 & 1).
+        
+        vault_ldap_helper is a dictionary in Vault KV Secret Engine.
+            {
+              "lock": 1
+            }
 
   *3 -  As creating and updating a group and adding removing members in a group is root operation 
         so we require root token for it. Decide with the team how you distribute root token to 
